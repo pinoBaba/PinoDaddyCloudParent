@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.pd</groupId>
+    <artifactId>pino-daddy-cloud-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>p-d-spring-cloud-1-eureka-server</module>
+        <module>p-d-spring-cloud-2-eureka-client-demo</module>
+        <module>p-d-spring-cloud-3-eureka-server</module>
+        <module>p-d-spring-cloud-4-eureka-server</module>
+        <module>p-d-spring-cloud-5-eureka-client-demo</module>
+    </modules>
+
+    <!--继承基础springboot父依赖-->
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.2.5.RELEASE</version>
+    </parent>
+
+    <!--同一管理SpringCloud版本-->
+    <properties>
+        <spring.cloud-version>Hoxton.SR6</spring.cloud-version>
+    </properties>
+
+    <!-- 维护父工程版本管理 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!--维护SpringCloud版本-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud-version}</version>
+                <!--  仅仅引入spring-cloud-dependencies的pom -->
+                <!-- pom仅仅引入父级springcoulddependencies依赖而不包含springclouddependcies的依赖-->
+                <type>pom</type>
+                <!--maven的两种类似继承方式 一种引入一种继承，不允许多继承时，需要使用引入-->
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

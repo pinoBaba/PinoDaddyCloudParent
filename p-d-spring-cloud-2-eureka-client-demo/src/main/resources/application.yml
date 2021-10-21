@@ -1,0 +1,14 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: EUREKACLIENTDEMO
+
+eureka:
+   client:
+     service-url:
+       #填写一个节点 测试node1出现down机无法注册
+       defaultZone:  http://localhost:8761/eureka
+   instance:
+     lease-expiration-duration-in-seconds: 10
+     lease-renewal-interval-in-seconds: 5
