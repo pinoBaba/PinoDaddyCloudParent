@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ORDERS
+  cloud:
+    consul:
+      #指定注册中心的地址
+      host: localhost
+      #指定注册中心的端口
+      port: 8500
+      #指定向注册中心提供本服务的客户端名称，当前属性会覆盖spring.application.name
+      discovery:
+        service-name: ${spring.application.name}
+
+server:
+  port: 8006
+
