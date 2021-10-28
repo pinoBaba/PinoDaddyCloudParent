@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>p-d-spring-cloud-6-consul-client-demo</module>
         <module>p-d-spring-cloud-7-demo-users</module>
         <module>p-d-spring-cloud-8-demo-orders</module>
     </modules>
