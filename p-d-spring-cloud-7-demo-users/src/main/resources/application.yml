@@ -11,6 +11,11 @@ spring:
       discovery:
         service-name: ${spring.application.name}
 
+#修改users调用orders的负载均衡策略
+ORDERS:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
 server:
   port: 8005
 
