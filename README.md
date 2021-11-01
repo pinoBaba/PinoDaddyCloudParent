@@ -1,2 +1,2 @@
 # p-d-spring-cloud
-its' a ribbon example 
+its' a OpenFeign example 
