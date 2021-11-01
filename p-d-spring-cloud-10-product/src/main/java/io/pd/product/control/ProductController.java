@@ -1,9 +1,8 @@
 package io.pd.product.control;
 
+import io.pd.product.entity.productVO;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description 产品服务，提供产品信息接口
@@ -48,6 +47,33 @@ public class ProductController {
     @GetMapping("list")
     public String list(){
         return "product service show the list:"+ new Product().toString() + " \n and this port is "+port;
+    }
+
+    /**
+     * 以零散的参数传递
+     */
+    @GetMapping("args/scattered")
+    public String showArgs0(String id, String name  ){
+        System.out.println( "请求参数:"+id + name   );
+        return "show product success,port :"+ port;
+    }
+
+    /**
+     * 以路径的参数传递
+     */
+    @GetMapping("args/scattered/{id}/{name}")
+    public String showArgs(@PathVariable("id")  String id,@PathVariable("name") String name  ){
+        System.out.println( "请求参数:"+id + name   );
+        return "show args-path success,port :"+ port;
+    }
+
+    /**
+        以对象传递参数
+     */
+    @PostMapping("args/body")
+    public String showArgs1(@RequestBody productVO P){
+        System.out.println( "请求参数:"+P  );
+        return "show ARGS1 success,port :"+ port;
     }
 
 }
