@@ -1,6 +1,6 @@
 spring:
   application:
-    name: CATEGARY
+    name: CATEGORY
   cloud:
     consul:
       host: localhost

@@ -1,0 +1,39 @@
+package io.pd.categary.control;
+
+import io.pd.categary.feignclients.ProductFeign;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @Description 种类服务，调用产品服务的信息
+ * @author: PinoDaddy
+ * @date: 2021/11/1
+ */
+@RestController
+@RequestMapping("categary")
+public class CategoryController {
+    public CategoryController(ProductFeign f){
+        this.productFeign = f;
+    }
+
+
+    @Value("${server.port}")
+    private int port;
+    @GetMapping
+    public String healthy(){
+        return "CATEGORY service IS ready,AND support PORT is "+port;
+    }
+
+    private ProductFeign productFeign;
+
+    @GetMapping("call/product/list")
+    public String showProductList(){
+        final Object o = productFeign.showProductList();
+        return "CATEGORY service IS ready,AND support PORT is "+port
+                +"\n*********************************\n"+
+                ",CALLBACK :"+o;
+    }
+
+}
