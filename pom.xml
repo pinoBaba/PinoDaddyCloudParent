@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>p-d-spring-cloud-7-demo-users</module>
-        <module>p-d-spring-cloud-8-demo-orders</module>
+        <module>p-d-spring-cloud-9-categary</module>
+        <module>p-d-spring-cloud-10-product</module>
     </modules>
 
     <!--继承基础springboot父依赖-->
