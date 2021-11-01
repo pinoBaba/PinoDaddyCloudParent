@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>p-d-spring-cloud-7-demo-users</artifactId>
+    <artifactId>p-d-spring-cloud-9-categary</artifactId>
 
     <dependencies>
         <!--web-->
@@ -28,7 +28,5 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-
     </dependencies>
-
 </project>
