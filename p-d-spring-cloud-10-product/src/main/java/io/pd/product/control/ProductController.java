@@ -76,4 +76,27 @@ public class ProductController {
         return "show ARGS1 success,port :"+ port;
     }
 
+    /**
+     * 定义以数组传递参数
+     */
+    @GetMapping("args/array")
+    public String showArgs4( String[] ids ){
+        for (String id : ids)   System.out.println(id);
+
+        return "SHOW ARGS4 success,port :"+ port;
+    }
+
+    /**
+     * 定义以集合List传递参数
+     * 谨记 MVC不支持直接以list集合方式传递参数，需以对象存储集合传输
+     */
+    @GetMapping("args/list")
+    public String showArgs5( productVO productVO ){
+
+        productVO.getIds().forEach(id->{
+            System.out.println(id);
+        });
+        return "SHOW ARGS5 SUCCESS,port :"+ port;
+    }
+
 }

@@ -64,4 +64,21 @@ public class CategoryController {
         return "category service ok,see detail in console";
     }
 
+    @GetMapping("call/product/args/array")
+    public String test4(){
+        final String res = productFeign.showArgs4( new String[]{"33","11","1","2"} );
+
+        System.out.println(res);
+
+        return "request test4 ok see more in console";
+    }
+
+    @GetMapping("call/product/args/list")
+    public String test5(){
+        final String res = productFeign.showArgs4( new String[]{"af1","wx1","ns0","09f3b"} );
+
+        System.out.println(res);
+
+        return "request test4 ok see more in console";
+    }
 }

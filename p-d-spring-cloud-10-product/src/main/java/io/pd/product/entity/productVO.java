@@ -1,6 +1,7 @@
 package io.pd.product.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Description 产品实体类
@@ -11,6 +12,16 @@ public class productVO {
     private String id;
     private String name;
     private Date date;
+
+    private List<String> ids;
+
+    public List<String> getIds() {
+        return ids;
+    }
+
+    public void setIds(List<String> ids) {
+        this.ids = ids;
+    }
 
     public productVO(String id, String name, Date date) {
         this.id = id;

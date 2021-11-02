@@ -24,4 +24,11 @@ public interface ProductFeign {
     @PostMapping("args/body")
     String showArgs1(@RequestBody productVO productVO );
 
+    //声明以数组方式传递参数调用服务提供者方法showArgs4()
+    @GetMapping("args/array")
+    String showArgs4(@RequestParam("ids") String[] ids );
+
+    //声明以集合List传递参数
+    @GetMapping("args/list")
+    String showArgs5(@RequestParam("ids") String[] ids );
 }
