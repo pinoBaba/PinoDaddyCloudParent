@@ -4,6 +4,9 @@ import io.pd.product.entity.productVO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+import java.util.Map;
+
 /**
  * @Description 产品服务，提供产品信息接口
  * @author: PinoDaddy
@@ -98,5 +101,18 @@ public class ProductController {
         });
         return "SHOW ARGS5 SUCCESS,port :"+ port;
     }
+
+    /**
+     * 定义响应数据以对象传递
+     */
+    @GetMapping("response/entity")
+    public productVO getProductById( Integer id ){
+        System.out.println( "id:"+id );
+        return new productVO("1","黑丝", new Date());
+    }
+
+    //定义响应数据以Map包含
+    @GetMapping("response/map")
+    public Map
 
 }

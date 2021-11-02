@@ -4,6 +4,8 @@ import io.pd.categary.feignclients.entity.productVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 /**
  * @Description product服务请求客户端
  * @author: PinoDaddy
@@ -31,4 +33,8 @@ public interface ProductFeign {
     //声明以集合List传递参数
     @GetMapping("args/list")
     String showArgs5(@RequestParam("ids") String[] ids );
+
+    //声明服务提供者响应entity
+    @GetMapping("response/entity")
+    productVO getProductById(@RequestParam(value="id") Integer id );
 }

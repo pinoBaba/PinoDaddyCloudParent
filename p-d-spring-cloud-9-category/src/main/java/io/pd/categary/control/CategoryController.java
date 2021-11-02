@@ -81,4 +81,12 @@ public class CategoryController {
 
         return "request test4 ok see more in console";
     }
+
+    @GetMapping("call/product/response/entity")
+    public productVO test6(){
+
+        final productVO productById = productFeign.getProductById(9);
+
+        return productById;
+    }
 }
