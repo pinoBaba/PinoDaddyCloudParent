@@ -12,6 +12,9 @@ public class productVO {
     private String name;
     private Date date;
 
+    public productVO() {
+    }
+
     public productVO(String id, String name, Date date) {
         this.id = id;
         this.name = name;

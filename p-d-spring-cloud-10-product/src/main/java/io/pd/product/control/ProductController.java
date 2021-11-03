@@ -4,8 +4,7 @@ import io.pd.product.entity.productVO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Description 产品服务，提供产品信息接口
@@ -111,8 +110,38 @@ public class ProductController {
         return new productVO("1","黑丝", new Date());
     }
 
-    //定义响应数据以Map包含
-    @GetMapping("response/map")
-    public Map
+    //定义响应数据以Map包含实体对象集
+    @GetMapping("response/map/{categoryId}/{currentPage}/{pageSize}")
+    public Map<String,Object> getProductsPyPage( @PathVariable("categoryId") int categoryId ,@PathVariable("currentPage") int currentPage ,@PathVariable("pageSize") int pageSize  ){
+
+        System.out.println("请求参数:"+ categoryId + currentPage + pageSize);
+
+        //响应集合中，应包含当前页 总条数  和实际对象数据
+        Map<String,Object> result = new HashMap<String ,Object>();
+        result.put( "currentPage" , 17L);
+        result.put( "count", 999999L);
+
+        List<productVO> products = new ArrayList<>();
+        products.add(new productVO("1","黑丝",new Date()));
+        products.add(new productVO("2","白丝",new Date()));
+        products.add(new productVO("3","彩丝",new Date()));
+
+        result.put( "products" ,products);
+        return result;
+    }
+
+    //定义响应数据以List包含实体对象集
+    @GetMapping("response/list")
+    public List<productVO> getProductsByTypeid( int typeId ){
+        System.out.println(" typeid :" + typeId);
+
+        List<productVO> products = new ArrayList<>();
+        products.add(new productVO("4","黑丝",new Date()));
+        products.add(new productVO("5","黑丝",new Date()));
+        products.add(new productVO("6","还tm是黑丝",new Date()));
+        return products;
+    }
+
+
 
 }

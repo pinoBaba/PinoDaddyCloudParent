@@ -5,6 +5,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description product服务请求客户端
@@ -37,4 +39,12 @@ public interface ProductFeign {
     //声明服务提供者响应entity
     @GetMapping("response/entity")
     productVO getProductById(@RequestParam(value="id") Integer id );
+
+    //声明服务提供者响应类型为map
+    @GetMapping("response/map/{categoryId}/{currentPage}/{pageSize}")
+    Map getProductsPyPage( @PathVariable("categoryId") int categoryId ,@PathVariable("currentPage") int currentPage ,@PathVariable("pageSize") int pageSize );
+
+    //声明服务提供者响应类型为List<Entity>
+    @GetMapping("response/list")
+    List<productVO> getProductsByTypeid( @RequestParam("typeId") int typeId );
 }

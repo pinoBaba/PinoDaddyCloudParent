@@ -1,5 +1,6 @@
 package io.pd.categary.control;
 
+import com.alibaba.fastjson.JSONObject;
 import io.pd.categary.feignclients.ProductFeign;
 import io.pd.categary.feignclients.entity.productVO;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 种类服务，调用产品服务的信息
@@ -89,4 +92,46 @@ public class CategoryController {
 
         return productById;
     }
+
+    @GetMapping("call/product/response/map")
+    public Map test7(){
+
+        final Map<String,Object> productsPyPage = productFeign.getProductsPyPage(8, 1, 20);
+
+        int r1 = ( int )productsPyPage.get("currentPage");
+        int r2 = ( int )productsPyPage.get("count");
+        System.out.println(r1 + r2);
+
+        /*  Object无法强转成entity  java.lang.ClassCastException: java.util.LinkedHashMap cannot be cast to io.pd.categary.feignclients.entity.productVO
+            List<productVO> r3 = (List<productVO>)(productsPyPage.get("products"));
+            r3.forEach(p->{
+                System.out.println( p );
+            });
+        */
+
+        // 错误示范 com.alibaba.fastjson.JSONException: not match : - =
+        // final List<productVO> products =  JSONObject.parseArray( productsPyPage.get("products").toString() , productVO.class );
+
+        //先序列化
+        final String s = JSONObject.toJSONString(productsPyPage.get("products"));
+        //再反序列化
+        List<productVO> products = JSONObject.parseArray( s, productVO.class);
+        products.forEach(product->{
+            //需要json对象字符转对象 引入FastJson
+
+           // final productVO productVO = JSONObject.parseObject(product.toString(), productVO.class);
+            System.out.println( product );
+        });
+
+
+
+        return productsPyPage;
+    }
+    @GetMapping("call/product/response/list")
+    public List<productVO> test8() {
+        final List<productVO> productsByTypeid = productFeign.getProductsByTypeid(3);
+        System.out.println("响应信息：" +productsByTypeid);
+        return productsByTypeid;
+    }
+
 }
