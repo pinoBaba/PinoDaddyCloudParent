@@ -142,6 +142,27 @@ public class ProductController {
         return products;
     }
 
+    //测试调用者请求本接口超时 1s 处于全局超时外
+    @PostMapping
+    public String test0() throws InterruptedException {
+        System.out.println(1);
+        Thread.sleep(1000);
+        return "1000 product service is ready,and support port is "+port;
+    }
 
+    //测试调用者请求本接口超时 3s  处于全局超时内 指定服务超时外
+    @PutMapping
+    public String test1() throws InterruptedException {
+        System.out.println(3);
+        Thread.sleep(3000);
+        return " 3000 product service is ready,and support port is "+port;
+    }
+    //测试调用者请求本接口超时 5s   处于指定服务超时以内
+    @DeleteMapping
+    public String test2() throws InterruptedException {
+        System.out.println(5);
+        Thread.sleep(5000);
+        return " 5000 product service is ready,and support port is "+port;
+    }
 
 }

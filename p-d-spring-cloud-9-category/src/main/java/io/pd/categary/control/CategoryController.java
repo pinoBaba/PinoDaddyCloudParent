@@ -134,4 +134,21 @@ public class CategoryController {
         return productsByTypeid;
     }
 
+    org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(CategoryController.class);
+    @GetMapping("call/product/1")
+    public String test9() {
+        log.debug("成功设置日志");
+        final String s = productFeign.test0();
+        log.debug(s);
+        return s;
+    }
+    @GetMapping("call/product/3")
+    public String test10() {
+        return productFeign.test1();
+    }
+    @GetMapping("call/product/5")
+    public String test11() {
+        return productFeign.test2();
+    }
+
 }

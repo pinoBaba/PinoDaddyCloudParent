@@ -11,3 +11,31 @@ spring:
 
 server:
   port: 8008
+
+feign:
+  client:
+    config:
+      PRODUCT:
+        #设置openfeign输出调用过程日志类型 , warning:此处指定的服务名必须必须必须与feignclient作用与类上注解的的名称一致，区分大小写 ， 否则不生效
+        loggerLevel:  full
+        #默认当前服务请求其他 某一个特定 服务的时间为1S , 修改超时时间 , 单位毫秒  ，暂时未知同时存在 serviceName 和 default是否冲突 或者覆盖
+        readTimeout: 5500   #变换值 1500 3500 5500
+        connectTimeout: 5500
+      default:
+        loggerLevel:  basic
+        #设置对请求所有服务超时
+        #全局建立连接超时
+        connectTimeout: 1500
+        #全局请求超时
+        readTimeout: 1500
+
+
+
+
+#指定feignclient包所在位置的日志输出级别
+logging:
+  level:
+    io:
+      pd:
+        categary:
+          feignclients: debug
