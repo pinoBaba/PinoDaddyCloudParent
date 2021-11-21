@@ -63,4 +63,15 @@ public class testController {
     }
 
 
+    @GetMapping("2")
+    public String test2( Integer id ){
+
+
+        if( id<0 )  throw new RuntimeException("非法参数id:"+id);
+        if( id==0 )  {  int i=10/0; }
+        log.info("完成参数校验");
+
+        return "HystrixService#testController#test2 method invoked success;";
+
+    }
 }

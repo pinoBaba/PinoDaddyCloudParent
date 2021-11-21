@@ -1,0 +1,14 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: OPENFEIGNHYSTRIX
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+#启用openfeign中hystrix的开关，默认关闭
+feign:
+  hystrix:
+    enabled: true
