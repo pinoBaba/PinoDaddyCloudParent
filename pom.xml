@@ -11,6 +11,7 @@
     <modules>
         <module>p-d-spring-cloud-11-hystrix-demo</module>
         <module>p-d-spring-cloud-12-OpenFeignHystrix</module>
+        <module>p-d-spring-cloud-13-hystrix_dashboard</module>
     </modules>
 
     <!--继承基础springboot父依赖-->
