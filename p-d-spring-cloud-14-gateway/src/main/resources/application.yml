@@ -9,14 +9,14 @@ spring:
       routes:
         #匹配category的路由信息
         - id: routes_category           #当前匹配规则id
-          uri: http://localhost:8008/   #被转发目标机器
+          uri: http://localhost:8088/   #被转发目标机器
           predicates: #断言 ， 配置路由规则 , 通过以下地址可以访问上述配置的uri
             - Path=/category  #谨记 path中是= 而非:
 
-        - id: routes_product
-          uri: http://localhost:8007/
-          predicates:
-            - Path=/product
+ #       - id: routes_product
+ #         uri: http://localhost:8007/
+ #         predicates:
+ #           - Path=/product
 
 server:
   port: 9000
