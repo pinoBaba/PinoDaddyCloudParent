@@ -11,6 +11,7 @@
     <modules>
         <module>p-d-spring-cloud-9-category</module>
         <module>p-d-spring-cloud-10-product</module>
+        <module>p-d-spring-cloud-14-gateway</module>
     </modules>
 
     <!--继承基础springboot父依赖-->

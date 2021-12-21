@@ -1,2 +1,2 @@
 # p-d-spring-cloud
-its' a OpenFeign example 
+its' a GateWay example 
